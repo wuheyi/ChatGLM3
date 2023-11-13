@@ -9,6 +9,9 @@ import time
 from contextlib import asynccontextmanager
 from typing import List, Literal, Optional, Union
 
+import os
+os.environ['KAGGLE_USERNAME'] = "why521" 
+os.environ['KAGGLE_KEY'] = "5fce36cc24eb5a1aae393b38da95e10e"
 import kaggle
 import torch
 import uvicorn
@@ -241,8 +244,5 @@ if __name__ == "__main__":
     model = model.eval()
     url = kaggle.web.app.url
     print("Service URL:", url)
-    import os
-    os.environ['KAGGLE_USERNAME'] = "why521" 
-    os.environ['KAGGLE_KEY'] = "5fce36cc24eb5a1aae393b38da95e10e"
 
     kaggle.web.app.deploy('app', open_browser=False, host='0.0.0.0', port=8000)
