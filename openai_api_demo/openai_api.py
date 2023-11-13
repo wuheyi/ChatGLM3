@@ -9,6 +9,7 @@ import time
 from contextlib import asynccontextmanager
 from typing import List, Literal, Optional, Union
 
+import kaggle
 import torch
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -238,5 +239,7 @@ if __name__ == "__main__":
     # from utils import load_model_on_gpus
     # model = load_model_on_gpus("THUDM/chatglm3-6b", num_gpus=2)
     model = model.eval()
+    url = kaggle.web.app.url
+    print("Service URL:", url)
 
-    uvicorn.run(app, host='0.0.0.0', port=8000, workers=1)
+    kaggle.web.app.deploy('app', open_browser=False, host='0.0.0.0', port=8000)
