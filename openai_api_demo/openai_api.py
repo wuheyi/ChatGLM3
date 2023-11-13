@@ -242,7 +242,6 @@ if __name__ == "__main__":
     # from utils import load_model_on_gpus
     # model = load_model_on_gpus("THUDM/chatglm3-6b", num_gpus=2)
     model = model.eval()
+    kaggle.web.app.deploy('app', open_browser=False, host='0.0.0.0', port=8000)
     url = kaggle.web.app.url
     print("Service URL:", url)
-
-    kaggle.web.app.deploy('app', open_browser=False, host='0.0.0.0', port=8000)
